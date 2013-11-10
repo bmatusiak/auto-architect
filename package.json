@@ -10,6 +10,9 @@
     "type": "git",
     "url": "git://github.com/bmatusiak/auto-architect.git"
   },
+  "dependencies": {
+      "architect": "0.1.10"
+  },
   "keywords": [
     "architect"
   ],
