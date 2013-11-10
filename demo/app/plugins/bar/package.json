@@ -1,0 +1,15 @@
+{
+    "name": "bar",
+    "version": "0.0.1",
+
+    "main": "./bar.js",
+
+    "plugin": {
+        "provides": [
+            "bar"
+        ],
+        "consumes": [
+            "app"
+        ]
+    }
+}

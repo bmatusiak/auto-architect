@@ -1,0 +1,15 @@
+{
+    "name": "app",
+    "version": "0.0.1",
+
+    "main": "./sub.js",
+
+    "plugin": {
+        "provides": [
+            "sub"
+        ],
+        "consumes": [
+            "app"
+        ]
+    }
+}

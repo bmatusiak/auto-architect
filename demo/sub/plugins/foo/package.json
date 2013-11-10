@@ -1,0 +1,16 @@
+{
+    "name": "foo",
+    "version": "0.0.1",
+
+    "main": "./foo.js",
+
+    "plugin": {
+        "provides": [
+            "foo"
+        ],
+        "consumes": [
+            "sub",
+            "bar"
+        ]
+    }
+}
