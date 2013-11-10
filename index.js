@@ -1,15 +1,23 @@
 "use strict";
 var fs = require("fs");
 
-module.exports = function(pluginName,pluginDir,init){
+var Architect = require("architect");
+    
+var EventEmitter = require('events').EventEmitter;
+
+Architect.setup = function(pluginName,pluginDir,init){
     
 return function(options, imports, register) {
     
+    if(!imports.on || !imports.emit){
+        var _events = new EventEmitter();
+        imports.on = _events.on.bind(_events);
+        imports.emit = _events.emit.bind(_events);
+    }
     var pluginObject = imports;
     var registerObject = {};
     registerObject[pluginName] = pluginObject;
     
-    var Architect = require("architect");
     
     if(!options.plugins){
         options.plugins = [];
@@ -37,13 +45,11 @@ return function(options, imports, register) {
                 if(!plugin.name)plugin.name = name;
                 
                 registerObject[pluginName][plugin.name] = plugin;
-                //console.log("Service loaded " + name);
             });
             $imports.hub.on("ready", function(app) {
                 var plugins = app.services;
                 init(registerObject[pluginName], plugins);
                 register(null, registerObject);
-                console.log(pluginName,"Loaded!");
             });
             $register(null, registerObject);
         }
@@ -51,10 +57,11 @@ return function(options, imports, register) {
 
     Architect.createApp(ArchitectConfig, function(err, architect) {
         if (err) {
-            console.log(err);
             register(err);
         }
     });
 };
 
 };
+
+module.exports = Architect;

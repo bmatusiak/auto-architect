@@ -35,6 +35,7 @@ Architect.createApp(resolvedConfig, function(err, architect) {
         throw err;
     }else{
         console.log("Architect App Loaded!");
+        console.log(architect)
     }
 });
 
