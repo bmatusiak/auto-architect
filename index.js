@@ -60,6 +60,8 @@ return function(options, imports, register) {
             register(err);
         }
     });
+    
+    return imports;
 };
 
 };
