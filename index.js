@@ -23,7 +23,7 @@ return function(options, imports, register) {
         options.plugins = [];
         var dirList = fs.readdirSync(pluginDir);
         for(var i = 0; dirList.length >= i;i++){
-            if(dirList[i]){
+            if(dirList[i] && dirList[i].indexOf("_.") !== 0){
                 if(options.pluginOptions && options.pluginOptions[dirList[i]]){
                     options.pluginOptions[dirList[i]].packagePath = pluginDir+"/"+dirList[i];
                     options.plugins.push(options.pluginOptions[dirList[i]]);
